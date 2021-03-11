@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block javascript %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+{% block content %}
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %}
+<p>
+  {% for field in login_form %}
+    {{field.label_tag}}
+    {{field}}
+      {% for error in field.errors %}
+          <p>{{error}}</p>
+      {% endfor %}
+      </p>
+  {% endfor %}
+     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="6LfRnBIaAAAAADIxABMOOWXfDYQcwnkOcQKRiBhS"></div>
+    <button type="submit">Log In</button>
+
+</form>
+
+{% endblock content %}
